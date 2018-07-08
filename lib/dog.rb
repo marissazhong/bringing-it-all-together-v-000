@@ -31,7 +31,10 @@ class Dog
       SELECT * FROM dog WHERE name = ? LIMIT 1
     SQL
     self.new_from_db(DB[:conn].execute(sql, name)[0])
+  end
 
+  def save
+    
   end
 
 end
