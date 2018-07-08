@@ -63,4 +63,8 @@ class Dog
     SQL
     self.new_from_db(DB[:conn].execute(sql, num)[0])
   end
+
+  def find_or_create_by(name)
+
+  end
 end
