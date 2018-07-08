@@ -52,6 +52,15 @@ class Dog
     DB[:conn].execute(sql, self.name, self.breed, self.id)
   end
 
-  
+  def self.create(attributes)
+    dog = Dog.new(attributes)
+    dog.save
+  end
 
+  def self.find_by_id(num)
+    sql = <<-SQL
+      SELECT * FROM dogs WHERE id = ? LIMIT 1
+    SQL
+    self.new_from_db(DB[:conn].execute(sql, num)[0])
+  end
 end
