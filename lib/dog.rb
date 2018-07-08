@@ -28,7 +28,7 @@ class Dog
 
   def self.find_by_name(name)
     sql = <<-SQL
-      SELECT * FROM dog WHERE name = ? LIMIT 1
+      SELECT * FROM dogs WHERE name = ? LIMIT 1
     SQL
     self.new_from_db(DB[:conn].execute(sql, name)[0])
   end
@@ -42,13 +42,13 @@ class Dog
         VALUES (?, ?)
       SQL
       DB[:conn].execute(sql,self.name,self.breed)
-      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dog")[0][0]
+      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
     end
     self
   end
 
   def update
-    sql = "UPDATE dog SET name = ?, breed = ? WHERE id = ?"
+    sql = "UPDATE dogs SET name = ?, breed = ? WHERE id = ?"
     DB[:conn].execute(sql, self.name, self.breed, self.id)
   end
 
