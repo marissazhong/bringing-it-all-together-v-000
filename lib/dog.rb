@@ -26,4 +26,8 @@ class Dog
     dog = Dog.new(attributes)
   end
 
+  def self.find_by_name(name)
+    
+  end
+
 end
